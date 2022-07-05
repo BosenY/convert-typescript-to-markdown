@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "typescript-xwind-plugin",
+        "config": "./tailwind.config.js", //Absolute filepath to tailwind config
+        "ignoreErrors": null, //regex pattern string or null
+        "tags": [
+          "tw",
+          "xw"
+        ] //tags that trigger xwind plugin
+      }
+    ],
+    "types": [
+      "@emotion/react/types/css-prop"
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
