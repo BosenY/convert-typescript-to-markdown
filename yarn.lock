@@ -2363,6 +2363,11 @@ react-dom@18.0.0:
     loose-envify "^1.1.0"
     scheduler "^0.21.0"
 
+react-github-fork-ribbon@^0.7.1:
+  version "0.7.1"
+  resolved "https://repo.huaweicloud.com/repository/npm/react-github-fork-ribbon/-/react-github-fork-ribbon-0.7.1.tgz#64a4a9e83bea8e7abac38cfc28015c1b34adef35"
+  integrity sha512-buxFTLteR83jHGDiJfukS5AevEzGszHpjXyPAMn3+saHeOJa3FAAHdlQuWVjyVLPejs2aNqHTNRGkHXwO/1A4A==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://repo.huaweicloud.com/repository/npm/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
