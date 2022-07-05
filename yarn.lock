@@ -1915,9 +1915,9 @@ jsonfile@^6.0.1:
     object.assign "^4.1.2"
 
 language-subtag-registry@~0.3.2:
-  version "0.3.21"
-  resolved "https://repo.huaweicloud.com/repository/npm/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz#04ac218bea46f04cb039084602c6da9e788dd45a"
-  integrity sha512-L0IqwlIXjilBVVYKFT37X9Ih11Um5NEl9cbJIuU/SwP/zEEAbBPOnEeeuxVMf45ydWQRDQN3Nqc96OgbH1K+Pg==
+  version "0.3.22"
+  resolved "https://repo.huaweicloud.com/repository/npm/language-subtag-registry/-/language-subtag-registry-0.3.22.tgz#2e1500861b2e457eba7e7ae86877cbd08fa1fd1d"
+  integrity sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==
 
 language-tags@^1.0.5:
   version "1.0.5"
@@ -2005,11 +2005,6 @@ modern-normalize@^1.0.0:
   version "1.1.0"
   resolved "https://repo.huaweicloud.com/repository/npm/modern-normalize/-/modern-normalize-1.1.0.tgz#da8e80140d9221426bd4f725c6e11283d34f90b7"
   integrity sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==
-
-monaco-editor@^0.33.0:
-  version "0.33.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
-  integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
 ms@2.0.0:
   version "2.0.0"
