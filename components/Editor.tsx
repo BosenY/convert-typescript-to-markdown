@@ -1,3 +1,11 @@
+/*
+ * @Author: Boseny yxy43445@gmail.com
+ * @Date: 2022-07-06 01:07:05
+ * @LastEditors: Boseny yxy43445@gmail.com
+ * @LastEditTime: 2022-07-25 17:17:43
+ * @FilePath: /convert-typeScript-to-markdown/components/Editor.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable react/display-name */
 /* eslint-disable import/no-anonymous-default-export */
@@ -9,8 +17,17 @@ import { isMobile } from "react-device-detect";
 import xw from "xwind";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import remarkGfm from 'remark-gfm'
+import remarkGfm from "remark-gfm";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { parse } from "@babel/parser";
+import {
+  isTSInterfaceDeclaration,
+  TSInterfaceDeclaration,
+  isTSPropertySignature,
+  isTSMethodSignature,
+  isIdentifier,
+  isExportNamedDeclaration,
+} from "@babel/types";
 const DemoCode = `interface ResolveType {
   /**
    * return resolve
@@ -29,11 +46,31 @@ export default () => {
     setShow(true);
   }
   const [markdownStr, setMarkdownStr] = useState("");
+  const [tsStr, setTsStr] = useState(DemoCode);
   function showValue() {
     alert(editorRef.current.getValue());
   }
   function handleMarkdownEditorChange(value, event) {
     setMarkdownStr(value);
+  }
+  function handleTsEditorChange(value) {
+    setTsStr(value);
+  }
+  function transformTsStr() {
+    console.log(tsStr)
+    const ast = parse(tsStr, {
+      sourceType: 'module',
+      plugins: ['typescript', 'classProperties']
+    })
+    const nodeList = []
+    for (let node of ast.program.body) {
+      if (isTSInterfaceDeclaration(node)) {
+        console.log(node)
+        nodeList.push(node)
+      }
+    }
+
+    // console.log(ast)
   }
   return (
     <>
@@ -44,15 +81,20 @@ export default () => {
       ) : (
         <>
           <div css={xw`flex justify-around`}>
-            <Editor
-              height="80vh"
-              width="30vw"
-              theme="vs-dark"
-              defaultLanguage="typescript"
-              defaultValue={DemoCode}
-              loading={<Loading />}
-              onMount={handleEditorDidMount}
-            />
+            <div css={xw` relative`}>
+              <button css={xw` bg-blueGray-600 z-50 absolute`} style={{left: '0px', top: '-30px'}} onClick={transformTsStr}>transform</button>
+              <Editor
+                height="80vh"
+                width="30vw"
+                theme="vs-dark"
+                defaultLanguage="typescript"
+                defaultValue={DemoCode}
+                loading={<Loading />}
+                onMount={handleEditorDidMount}
+                onChange={handleTsEditorChange}
+              />
+            </div>
+
             <Editor
               height="80vh"
               width="30vw"
