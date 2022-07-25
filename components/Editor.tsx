@@ -2,7 +2,7 @@
  * @Author: Boseny yxy43445@gmail.com
  * @Date: 2022-07-06 01:07:05
  * @LastEditors: Boseny yxy43445@gmail.com
- * @LastEditTime: 2022-07-25 17:17:43
+ * @LastEditTime: 2022-07-25 19:50:03
  * @FilePath: /convert-typeScript-to-markdown/components/Editor.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -28,10 +28,8 @@ import {
   isIdentifier,
   isExportNamedDeclaration,
 } from "@babel/types";
+import {compile} from '../utils/compile'
 const DemoCode = `interface ResolveType {
-  /**
-   * return resolve
-   */
   success: boolean;
   action: 'link' | 'modal' | 'easyShare' | 'toast' | 'subscribe' | 'addToHome';
   message?: any;
@@ -57,19 +55,10 @@ export default () => {
     setTsStr(value);
   }
   function transformTsStr() {
-    console.log(tsStr)
-    const ast = parse(tsStr, {
-      sourceType: 'module',
-      plugins: ['typescript', 'classProperties']
-    })
-    const nodeList = []
-    for (let node of ast.program.body) {
-      if (isTSInterfaceDeclaration(node)) {
-        console.log(node)
-        nodeList.push(node)
-      }
-    }
-
+  
+    const data = compile(tsStr)
+    console.log(data)
+    setMarkdownStr(data.markdown)
     // console.log(ast)
   }
   return (
@@ -95,7 +84,7 @@ export default () => {
               />
             </div>
 
-            <Editor
+            {/* <Editor
               height="80vh"
               width="30vw"
               theme="vs-dark"
@@ -104,7 +93,7 @@ export default () => {
               loading={<Loading />}
               onChange={handleMarkdownEditorChange}
               onMount={handleEditorDidMount}
-            />
+            /> */}
             <div css={xw`border`} style={{ width: "30vw" }}>
               <ReactMarkdown
                 components={{
